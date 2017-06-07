@@ -1,0 +1,20 @@
+Comandos Git
+
+git init - Inicializa tu directorio actual.
+
+git clone - project-dir/    - En caso de que el repositorio ya exista puedes copiarlo.
+
+git status					-Muestra el estado de mi repositorio. (Archivos nuevos, modificacdos, sin seguimiento, branch actual).
+
+git add						-Agrega archivos nuevos y modificados a la zona staging del repositorio.
+
+git commit -m				-Registra los cambios en la zona de 'stagging' al repositorio y los hace rastreables, recuperables y revisables.
+
+git log						-Revisa los cambios en el log del repositorio.
+
+git branch					-Un branch es un apuntador("copia") a un punto en la historia de otro branch (master). Representa una division del codigo base
+							 y permite realizar cambios sin afectar los cambios originales. (Buena practica no tener mas de 10 branch's).
+
+git branch <nombre>			-Crear un nuevo branch.
+
+git checkout <nombre>			-Permite moverse entre branch.
