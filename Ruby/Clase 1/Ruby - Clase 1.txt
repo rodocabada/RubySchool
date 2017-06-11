@@ -1,0 +1,28 @@
+Ruby
+Tipos de datos
+
+
+String 	-Con comillas sencillas las cadenas no cambian.
+		-Con comillas dobles para concatenar con variables.
+Float	-Uso de decimales.
+Symbols - No cambian y siempre ocuparan el mismo espacio en la memoria.
+
+
+
+hash	-Mapas en java.
+		hash = { :luke => 'Granjero convertidoe en Jedi', leia: 'Princesa de aldeeran', han: 'Rebelde con causa'}
+		
+Metodos 
+	def say(word)
+	puts word
+	end
+	
+nil		-Es para indicar "nada", parecido al null
+
+? puedo preguntarle cosas, regresa un true o false
+! le grito para que modifique el valor
+
+Definir un metodo "gritar" recibe de argumento una cadena y la imprime en mayusculas con tres signos de admiracion
+Ejemplo: hola -> HOLA!!!
+
+Se va a crear una google classroom.
