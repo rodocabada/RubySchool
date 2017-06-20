@@ -1,0 +1,72 @@
+-----Arrays
+Pueden ser distintos tipos de datos
+-Declarar el arreglo
+array = ["First element", 2, :true]
+-Agregar un nuevo elemento al array (Sin saber el indice en el cual se va a agregar, sera en el ultimo)
+array << :hello
+
+-----Iterar arrays con each
+list = ['Laura', 'Ever', 'Jose', 'Adriana']
+
+list.each do |name| --Variable donde se guardara 
+	puts "El nombre es #{name}" --Interpolar variables dentro de strings(Para interpolar debe ser dentro de comillas dobles)
+end
+
+-----Hashes
+Coleccion de datos - Llave y valor - No importa el orden
+Las llaves pueden ser de cualquier tipo.
+variables que comienzan con : son symbols
+normalmente para las llaves se usan symbols
+Nota: normalmente se le da nombre a los objetos con symbols
+
+hash = {'key' => 'First element', 2 => :second, doge: ['such', :wow]}
+
+hash["key"]
+=> "First element"
+
+hash[2]
+=> :second
+
+hash[:doge]
+=> ["such", :wow]
+
+---Podemos agregar elementos solo declarando una nueva llave y asignando un valor.
+
+---Iterar sobre un hash
+Aqui se asigna tomando en cuenta la llave.
+hash = {nombre: 'Ana', edad: 22, ocupacion: 'Ruby dev', nivel: 45.5}
+
+hash.each do |key, value|
+	puts "La llave #{key} tiene el valor #{value}"
+end
+
+------Symbols
+Cadena inmutable. Ocupa el mismo espacio en memoria.
+Son inmutable porque siempre apuntan al mismo espacio en memoria sin importar donde se declare.
+	:hi_im_a_symbol
+
+
+------Alcance de variables en Ruby
+meh = "Soy local, me muero cuando temrina mi bloque"
+@alive = 'Soy de instancia, existo en cada copia de la clase, pero no tengo el mismo valor de las demas'
+@@like_a_sir = 'Soy de clase, existo durante todas las instancias de la clase'
+$master = 'Soy global, accesible desde cualquier parte del programa'
+
+
+-----Metodos accesores
+class Persona
+	def initialize(name)
+		@nombre = name
+	end
+end
+
+ana = Persona.new("Ana Lucia")
+andrei = Persona.new("El Helo")
+
+
+------Metodos Accesores
+	
+
+
+
+-----Blocks - Procs - Lambdas
