@@ -1,0 +1,57 @@
+Apuntes Clase 3
+----Objetos, Clases, Modulos, Mixins
+
+Todo lo que manipulamos en Ruby es un objeto.
+
+---Clases - Sintaxis
+
+class Persona
+	attr_reader :nombre, :fecha_de_nacimiento
+	attr_accessor :genero
+end
+
+---Metodos - Sintaxis
+
+def saludar
+	puts "Hola, mi nombes es #{nombre}, mucho gusto!"
+end
+
+---Constructor
+Class Persona
+	def initialize(nombre, fecha_de_nacimiento)
+		@nombre = nombre
+		@fecha_de_nacimiento = Date.parse(fecha_de_nacimiento)
+	end
+end
+
+---Instanciando un objeto
+//La palabra new siempre hace referencia al constructor (initialize)
+x= Person.new('Andrei', '1985-06-26')
+
+
+---load
+Permite "cargar un archivo" (libreria) al entorno para poder para poder hacer uso de el.
+No lleva un seguimiento sobre si se ha cargado previamente el archivo, por lo que es posible "cargarlo" multiple veces.
+
+load 'persona.rb'
+
+---atributos virtuales
+Son metodos pertenecientes a la clase que aparentan ser un atributo del objeto, pero en realidad son un metodo.
+
+---Sobrecarga de constructores
+En ruby solo se puede tener un metodo constructor, para lo cual si requieres definir un parametro que no siempre se va a pasar al instanciar se inicializa como = nil
+
+---Herencia
+class Empleado < Persona
+
+end
+
+//super (busca un metodo con el mismo nombre pero de la clase padre)
+
+---Modulos
+Se utilizan comunmente para agrupar metodos.
+
+//En ruby las constantes se definen con mayusculas.
+//Para accesar a las constantes de una clase o un modulo se accesa con el <nombreModulo>::<nombre constante>
+//require_relative (imports)
+//
