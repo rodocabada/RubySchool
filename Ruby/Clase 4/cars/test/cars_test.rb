@@ -35,5 +35,8 @@ class CarsTest < Minitest::Test
   	assert car.engine_price == 500
   	assert car.wheel_info == "Michellin"
   	assert car.wheel_price == 200
+  	# Tarea
+  	# assert car.engine_info_and_price == "2.4L - 500.0"
+  	# metodos fantasma (ghost methods)
   end
 end
