@@ -1,0 +1,551 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Ruby - Objectos, Clases, Módulos y Mixins</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+    body {
+      font-family: 'Droid Serif';
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Yanone Kaffeesatz';
+      font-weight: normal;
+    }
+
+    h2, h3, h4, h5 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+    }
+
+    ul {
+      margin-left: 100px;
+      width: fit-content;
+    }
+
+    li {
+      text-align: left;
+      width: auto;
+    }
+
+    code {
+      text-align: left;
+    }
+
+    .remark-code, .remark-inline-code {
+      font-family: 'Ubuntu Mono';
+    }
+
+    .red {
+      color: #fa0000;
+    }
+
+    .float-right {
+      float: right;
+    }
+
+    .float-left {
+      float: left;
+    }
+
+    .hide {
+      visibility: hidden;
+    }
+
+    .biggest {
+      font-size: 350px;
+    }
+  </style>
+</head>
+
+<body>
+  <textarea id="source" class="center middle">
+layout: true
+background-image: url(images/ruby-school.png)
+background-position: left bottom
+class: center, middle
+
+---
+
+# Objectos, Clases, Módulos y Mixins
+### Enter the Matrix...
+
+???
+Lenguaje Ruby y el Paradigma Orientado a Objetos
+---
+
+# Objetos
+Como lo hemos estado diciendo, todo lo que manipulamos en Ruby es un objeto
+pero... qué significa eso?
+
+---
+
+.hide[
+# Person]
+.float-right[![Person Silhouette](images/person-silhouette.png)]
+
+---
+
+# Persona
+.float-right[![Person Silhouette](images/person-silhouette.png)]
+
+--
+
+.center[
+- ## Atributos]
+
+--
+
+.center[
+- ## Acciones]
+
+---
+
+# Atributos
+.float-right[![Person Silhouette](images/person-silhouette.png)]
+
+--
+
+También conocidos como propiedades.
+
+--
+
+.center.red[
+- ### Nombre]
+
+--
+
+.center.red[
+- ### Fecha de nacimiento]
+
+--
+
+.center.red[
+- ### Género]
+
+---
+
+# Acciones
+.float-right[![Person Silhouette](images/person-silhouette.png)]
+
+--
+
+También conocidos como comportamiento (técnicamente métodos).
+
+--
+
+.center.red[
+- ### Saludar]
+
+--
+
+.center.red[
+- ### Obtener edad actual]
+
+--
+
+.center.red[
+- ### Obtener paga]
+
+---
+
+Pero... de donde demonios vienen!?
+
+.hide[![Question Mark](images/suffering-meme.jpg)]
+
+---
+
+Pero... de donde demonios vienen!?
+
+![Question Mark](images/suffering-meme.jpg)
+
+---
+
+# Clases
+Una clase es un plano (blueprint) o plantilla para construir un tipo específico de objeto.
+
+- Cada objeto es construido de una clase.
+- Cada clase debe ser diseñada y programada para lograr una y solo una cosa. (A eso se le llama Principio de Responsabilidad Única)
+
+???
+Debido a que cada clase es diseñada bajo este principio, muchas clases son utilizadas para construir una aplicación entera.
+
+---
+
+# Clases
+
+```ruby
+class Persona
+
+
+end
+```
+
+---
+
+# Clases
+
+```ruby
+class Persona
+  # Atributos
+  # Acciones
+end
+```
+
+---
+
+# Clases
+
+```ruby
+class Persona
+  # Atributos
+  attr_reader   :nombre, :fecha_de_nacimiento
+  attr_accessor :genero
+
+  # Acciones
+  def saludar
+    puts "Hola, mi nombre es #{nombre}, mucho gusto!"
+  end
+
+  def obtener_edad_actual
+    # Cálculo super complejo desarrollado por la NASA...
+  end
+
+  def obtener_paga
+    # <Inserte estrofa de rap de Mc Dinero aquí>
+  end
+end
+```
+
+---
+
+# Constructor
+
+```ruby
+class Persona
+  # Accesores aquí...
+
+  def initialize
+
+
+  end
+
+  # Métodos acá...
+end
+```
+
+---
+
+# Constructor
+
+```ruby
+class Persona
+  # Accesores aquí...
+
+  def initialize(nombre, fecha_de_nacimiento)
+    @nombre              = nombre
+    @fecha_de_nacimiento = Date.parse(fecha_de_nacimiento)
+  end
+
+  # Métodos acá...
+end
+```
+
+---
+
+Grandioso genio... y ahora ¿cómo lo utilizo?
+
+![Genious](images/genious.png)
+
+---
+
+# "Instanciando" un objeto
+
+Enviamos los parámetros indicados al constructor.
+
+```ruby
+2.4.0 :001 > x = Person.new('Andrei', '1985-06-26')
+ => #<Persona:0x007f885a06aab0 @nombre="Andrei",
+      @fecha_de_nacimiento=#<Date: 1985-06-26 ((2446243j,0s,0n),+0s,2299161j)>,
+      @ahorro=0>
+```
+
+---
+
+# "Instanciando" un objeto
+
+A través de la variable que contiene al nuevo objeto generado hacemos uso de los
+atributos y acciones.
+
+```ruby
+2.4.0 :002 > x.saludar
+Hola, mi nombre es Andrei, mucho gusto!
+2.4.0 :003 > x.edad
+ => 31
+2.4.0 :004 > x.obtener_paga(1000)
+ => 1000
+2.4.0 :005 > x.obtener_paga(4000)
+ => 5000
+2.4.0 :006 > x.ahorro
+ => 5000
+```
+
+---
+
+Hey! Pero NO jala!
+
+.hide[![Mientes!](images/mientes.jpg)]
+
+---
+
+Hey! Pero NO jala!
+
+![Mientes!](images/mientes.jpg)
+
+---
+
+# load, require y require_relative
+
+---
+
+# load
+
+Permite "cargar" un archivo (librería) al entorno para poder hacer uso de él.
+No lleva un seguimiento sobre si se ha cargado previamente el archivo, por lo que
+es posible "cargarlo" múltiples veces.
+
+```ruby
+2.4.0 :001 > load 'persona.rb'
+ => true
+```
+
+---
+
+# require o require_relative
+
+De igual manera permiten cargar un archivo (librería) al entorno pero a diferencia
+del *load*, estos __si__ llevan el seguimiento sobre si se ha cargado previamente
+el archivo o no, por lo que solamente será cargado la primera vez.
+
+```ruby
+2.4.0 :001 > require './examples/persona'
+ => true
+2.4.0 :002 > require './examples/persona'
+ => false
+```
+
+```ruby
+2.4.0 :001 > require_relative 'persona'
+ => true
+2.4.0 :002 > require_relative 'persona'
+ => false
+```
+
+---
+
+Y ¿qué sucedería si necesitamos hacer uso de una clase más específica?
+
+---
+
+Tendríamos que repetir la definición de los atributos y acciones necesarias en
+esta nueva clase... sigh*
+
+```ruby
+class Empleado
+  attr_reader   :nombre, :fecha_de_nacimiento, :ahorro
+  attr_accessor :genero
+
+  # Y todo el demás mugrero... pero amá! que flojera! (ಥ﹏ಥ)
+end
+```
+
+---
+
+# Herencia
+
+Permite crear una clase más especializada de otra.
+Esta clase es conocida como "subclase" de la original y la original es conocida
+como "superclase" de la subclase.
+También se les conoce como clase padre y clase hija.
+
+---
+
+# Herencia
+
+```ruby
+class Empleado < Persona
+  # Así de simple champ! \o/
+end
+
+```
+
+---
+
+# Herencia
+
+```ruby
+2.4.0 :001 > require_relative 'empleado'
+ => true
+2.4.0 :002 > x = Empleado.new('Andrei', '1985-06-26')
+ => #<Empleado:0x007fd379932ea8 @nombre="Andrei",
+      @fecha_de_nacimiento=#<Date: 1985-06-26 ((2446243j,0s,0n),+0s,2299161j)>,
+      @ahorro=0>
+2.4.0 :003 > x.edad
+ => 31
+```
+
+---
+
+# Vamos a complicar más las cosas porque pues... YOLO!
+
+---
+
+# Herencia
+
+```ruby
+require_relative 'persona'
+
+class Empleado < Persona
+  @@no_de_empleado = 0
+
+  attr_accessor :no_de_empleado
+
+  def initialize(nombre, fecha_de_nacimiento)
+    @@no_de_empleado += 1
+    @no_de_empleado = @@no_de_empleado
+    super(nombre, fecha_de_nacimiento)
+  end
+end
+```
+
+---
+
+# Herencia
+
+```ruby
+2.4.0 :001 > require_relative 'empleado'
+ => true
+2.4.0 :002 > x = Empleado.new('Andrei', '1985-06-26')
+ => #<Empleado:0x007fc88e027868 @no_de_empleado=1,
+      @nombre="Andrei",
+      @fecha_de_nacimiento=#<Date: 1985-06-26 ((2446243j,0s,0n),+0s,2299161j)>,
+      @ahorro=0>
+2.4.0 :003 > y = Empleado.new('Juan', '1990-03-12')
+ => #<Empleado:0x007fc88e1a56e0 @no_de_empleado=2,
+      @nombre="Juan",
+      @fecha_de_nacimiento=#<Date: 1990-03-12 ((2447963j,0s,0n),+0s,2299161j)>,
+      @ahorro=0>
+```
+
+---
+
+# Módulos
+
+Se utilizan comúnmente para "agrupar" métodos, clases o incluso constantes.
+
+Pueden utilizarse como:
+
+- Librerías
+- Mixins
+
+---
+
+# Módulos como Librerías
+
+```ruby
+module​ Trigonometria​
+  PI = 3.141592654
+
+  ​def​ Trigonometria.sin(x)
+   ​# Cosas que yo k se, no soi 100tifiko..​.
+  ​end​
+​
+  ​def​ Trigonometria.cos(x)
+   ​# ..​.
+  ​end​
+​end​
+```
+
+---
+
+# Módulos como Librerías
+
+```ruby
+2.4.0 :001 > require_relative 'trigonometria'
+ => true
+2.4.0 :002 > Trigonometria.sin(2)
+ => 4
+```
+
+---
+
+# Módulos como Mixins
+
+```ruby
+module​ Debug
+  def​ pero_que_es_esto?
+    ​"​#{self.class.name}​ (id: ​#{self.object_id}​): ​#{self.name}​"​
+  ​end​
+​end
+```
+
+---
+
+# Módulos como Mixins
+
+```ruby
+require_relative 'debug'
+require_relative 'persona'
+
+class Empleado < Persona
+  include Debug
+
+  # Constructor, métodos y todo lo que le quieran incluir a su clase
+end
+```
+
+---
+
+# Módulos como Mixins
+
+```ruby
+2.4.0 :001 > require_relative 'empleado'
+ => true
+2.4.0 :002 > x = Empleado.new('Andrei', '1985-06-26')
+ => #<Empleado:0x007fc88e027868 @no_de_empleado=1,
+      @nombre="Andrei",
+      @fecha_de_nacimiento=#<Date: 1985-06-26 ((2446243j,0s,0n),+0s,2299161j)>,
+      @ahorro=0>
+2.4.0 :003 > x.pero_que_es_esto?
+ => "Empleado (id: 70232522069860): ANDREI"
+```
+
+*Nota: Recordemos que en Ruby se pueden incluir signos de interrogación y de
+  exclamación para nombrar métodos pero la convención para los aquellos que
+  incluyan uno de interrogación es que devuelvan un booleano.
+  Este es solo un caso demostrativo y no debería llamarse así. U_U*
+---
+
+# ¿Preguntas? ¿Dudas?
+
+    </textarea>
+  <script src="js/remark-latest.min.js">
+  </script>
+  <script>
+    var slideshow = remark.create();
+  </script>
+</body>
+
+</html>
